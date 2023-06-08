@@ -1,47 +1,88 @@
+Bash Script README
 
-Maintenance windows are typically planned, recurring periods of system downtime during which our DevOps/CloudOps team can perform preventative maintenance and system upgrades outside of peak traffic hours. To avoid having Dynatrace report on any performance anomalies that may result from such events.
+This repository contains a Bash script that allows you to perform various operations related to maintenance in a Dynatrace environment. The script provides a menu-driven interface to select the desired operation.
+Prerequisites
 
-Script folder structure.
+Before running the script, ensure that you have the following:
 
-Output folder - Scripts output logs stores.
+    Bash: The script is designed to be executed in a Bash environment.
+    Dynatrace API access: You need valid API credentials to access the Dynatrace environment.
 
-Logs folder - Dynatrace API response and status code stores.
+Usage
 
-Get  the service UID from Dynatrace tenant and use the same for creating a maintenance window.
+    Clone the repository to your local machine.
 
-git clone -
+    Navigate to the script directory: cd <path/to/script>
+    
+    Make the script executable: chmod +x script.sh
+    
+    Run the script: ./script.sh
 
-cd dynatrace/dt-maintenance
+    Select the desired operation from the menu options.
+    
+    
+Menu Options
 
-Execute script - Maintenance.sh
+The script provides the following menu options:
 
-Comand  - bash Maintenance.sh
+    get-list: Retrieve a list of entities (hosts, monitors, databases, process groups, or applications) from a Dynatrace environment.
+    create-maintenance: Create a maintenance window for a specific entity in the Dynatrace environment.
+    get-maintenance: Get the details of an existing maintenance window in the Dynatrace environment.
+    delete-maintenance: Delete a maintenance window from the Dynatrace environment.
+    quit: Exit the script.
 
-Select option 1 for get UID lists.
+Note: Some menu options may require additional input or authentication.
+Script Structure
 
-option 2 for creating maintenance window.
+The script is divided into the following files:
 
-option 3 for retrieving maintenance window Information.
+    script.sh: The main script file that contains the menu-driven interface and handles user input.
+    lib/get_list.sh: A supporting script file that retrieves a list of entities from the Dynatrace environment.
+    lib/post_maintenance.sh: A supporting script file that creates a maintenance window for a specific entity.
+    lib/get_maintenance.sh: A supporting script file that gets the details of an existing maintenance window.
+    lib/delete_maintenance.sh: A supporting script file that deletes a maintenance window.
+    
+   # Bash Script README
 
-option 4 for delete  maintenance window
+This repository contains a Bash script that allows you to perform various operations based on user selection. The script provides the following functionality:
 
-Select Dynatrace tenant
-Select Service to get UID
+## Script Execution Directory
 
+The script determines the execution directory based on the location of the script file.
 
-Re-run the same script for creating maintenance window  
+## Select Operation
 
-Execute script - Maintenance.sh
+The script presents a menu of operations to choose from:
 
-Comand  - bash Maintenance.sh
+1. Get List
+2. Create Maintenance
+3. Get Maintenance
+4. Delete Maintenance
+5. Quit
 
-option 1 for get UID lists.
+## Perform Operation
 
-Select option 2 for creating maintenance window.
+Once an operation is selected, the script executes the corresponding functionality. Each operation is associated with a specific script file located in the `lib` directory:
 
-option 3 for retrieving maintenance window Information.
+- `get_list.sh`: Retrieves a list of items based on the user's selection.
+- `post_maintenance.sh`: Creates a maintenance record based on the user's input.
+- `get_maintenance.sh`: Retrieves maintenance details based on the user's input.
+- `delete_maintenance.sh`: Deletes a maintenance record based on the user's input.
 
-option 4 for delete  maintenance window
+## Execution Flow
 
-Select Dynatrace tenant and Select appropriate options.
+1. The script determines the execution directory and sets the working directory accordingly.
+2. The current date and time are captured.
+3. The user is prompted to select an operation from the menu.
+4. Based on the user's selection, the corresponding script file is assigned to the variable `my_script`.
+5. The `run_script` function is called to execute the selected script.
+6. The selected script performs its specific functionality.
 
+## Usage
+
+To run the script, execute the following command:
+
+```shell
+./script.sh
+
+    
